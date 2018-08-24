@@ -22,9 +22,33 @@ namespace Quest_
             while (ST.BanditCurrentHealth > 0)
             {
                 PlayerHUD();
-                // Battle system needs to go here!
+                if (ST.BanditCurrentHealth < 3 && ST.BanditPotion == 1)
+                {
+                    Console.WriteLine("The bandit Pulls out a potion and takes a swig, smiling evilly as he does.");
+                    Console.ReadLine();
+                    ST.BanditCurrentHealth += D4();
+                    int damage = ST.PlayerWeapon;
+                    Console.WriteLine($"You swing your sword at the bandit dealing {damage} to the bandit.");
+                    ST.BanditCurrentHealth -= damage;
+                    Console.ReadLine();
+                }
+                else
+                {
+                    int banditDamage = ST.BanditSword;
+                    int damage = ST.PlayerWeapon;
+                    Console.WriteLine($"The bandit hits you for {banditDamage} you return the favor for {damage} right back at him");
+                    Console.ReadLine();
+                    ST.PlayerCurrentHealth -= banditDamage;
+                    ST.BanditCurrentHealth -= damage;
+                }
+                Console.WriteLine("The bandit is dead, you stand over his mangled form triumphant.");
+                Console.ReadLine();
             }
-        }
+                    
+
+
+            }
+        
         #endregion
 
         #region Utilities
