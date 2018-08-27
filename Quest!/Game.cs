@@ -27,27 +27,24 @@ namespace Quest_
                     Console.WriteLine("The bandit Pulls out a potion and takes a swig, smiling evilly as he does.");
                     Console.ReadLine();
                     ST.BanditCurrentHealth += D4();
-                    int damage = ST.PlayerWeapon;
+                    int damage = Rollem(ST.PlayerWeapon);
                     Console.WriteLine($"You swing your sword at the bandit dealing {damage} to the bandit.");
                     ST.BanditCurrentHealth -= damage;
                     Console.ReadLine();
                 }
                 else
                 {
-                    int banditDamage = ST.BanditSword;
-                    int damage = ST.PlayerWeapon;
+                    int banditDamage = Rollem(ST.BanditSword);
+                    int damage =Rollem(ST.PlayerWeapon);
                     Console.WriteLine($"The bandit hits you for {banditDamage} you return the favor for {damage} right back at him");
                     Console.ReadLine();
                     ST.PlayerCurrentHealth -= banditDamage;
                     ST.BanditCurrentHealth -= damage;
                 }
-                Console.WriteLine("The bandit is dead, you stand over his mangled form triumphant.");
-                Console.ReadLine();
-            }
-                    
-
-
-            }
+             }
+            Console.WriteLine("The bandit is dead!");
+            Console.ReadLine();
+        }
         
         #endregion
 
@@ -89,6 +86,43 @@ namespace Quest_
         #endregion
 
         #region Dice
+
+        public int Rollem(string Dice)
+        {
+            Random roll = new Random();
+            if (Dice == "D4")
+            {
+                int d4 = roll.Next(1, 5);
+                return d4;
+            }
+            if (Dice == "D6")
+            {
+                int d6 = roll.Next(1, 7);
+                return d6;
+            }
+            if (Dice == "D8")
+            {
+                int d8 = roll.Next(1, 9);
+                return d8;
+            }
+            if (Dice == "D10")
+            {
+                int d10 = roll.Next(1, 11);
+                return d10;
+            }
+            if (Dice == "D12")
+            {
+                int d12 = roll.Next(1, 13);
+                return d12;
+            }
+            if (Dice == "D20")
+            {
+                int d20 = roll.Next(1, 21);
+                return d20;
+            }
+            else
+                return -1;
+        }
 
         public int D4()
         {

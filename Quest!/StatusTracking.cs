@@ -21,7 +21,7 @@ namespace Quest_
         public double PlayerWeight { get; set; }
         public int PlayerRations { get; set; }
         public int PlayerKeys { get; set; }
-        public int PlayerWeapon { get; set; }
+        public string PlayerWeapon { get; set; }
         #endregion
 
 
@@ -41,7 +41,7 @@ namespace Quest_
             PlayerWeight = 0.0;
             PlayerRations = 5;
             PlayerKeys = 0;
-            PlayerWeapon = D6(); 
+            PlayerWeapon = "D6"; 
             #endregion
 
             #region Monster Constructors
@@ -49,7 +49,7 @@ namespace Quest_
             BanditCurrentHealth = 10;
             BanditMaxHealth = 10;
             BanditPotion = 1;
-            BanditSword = D6();
+            BanditSword = "D6";
             #endregion
 
         }
@@ -60,7 +60,7 @@ namespace Quest_
         public int BanditCurrentHealth { get; set; }
         public int BanditMaxHealth { get; private set; }
         public int BanditPotion { get; set; }
-        public int BanditSword { get; set; }
+        public string BanditSword { get; set; }
 
         #endregion
 
