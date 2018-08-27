@@ -8,6 +8,7 @@ namespace Quest_
 {
     class Game
     {
+        Dice Dice = new Dice();
         StatusTracking ST = new StatusTracking();
         #region Locations
 
@@ -27,15 +28,15 @@ namespace Quest_
                     Console.WriteLine("The bandit Pulls out a potion and takes a swig, smiling evilly as he does.");
                     Console.ReadLine();
                     ST.BanditCurrentHealth += D4();
-                    int damage = Rollem(ST.PlayerWeapon);
+                    int damage = Dice.Rollem(ST.PlayerWeapon);
                     Console.WriteLine($"You swing your sword at the bandit dealing {damage} to the bandit.");
                     ST.BanditCurrentHealth -= damage;
                     Console.ReadLine();
                 }
                 else
                 {
-                    int banditDamage = Rollem(ST.BanditSword);
-                    int damage =Rollem(ST.PlayerWeapon);
+                    int banditDamage = Dice.Rollem(ST.BanditSword);
+                    int damage =Dice.Rollem(ST.PlayerWeapon);
                     Console.WriteLine($"The bandit hits you for {banditDamage} you return the favor for {damage} right back at him");
                     Console.ReadLine();
                     ST.PlayerCurrentHealth -= banditDamage;
@@ -63,7 +64,7 @@ namespace Quest_
         {
             Console.Clear();
             PlayerHUD();
-            int travelEvent = D10();
+            int travelEvent = Dice.Rollem("D10");
             if (travelEvent >= 1 && travelEvent <= 5)
             {
                 Console.WriteLine("It's a little quiet out here, a little too quiet...");
@@ -85,81 +86,6 @@ namespace Quest_
         }
         #endregion
 
-        #region Dice
-
-        public int Rollem(string Dice)
-        {
-            Random roll = new Random();
-            if (Dice == "D4")
-            {
-                int d4 = roll.Next(1, 5);
-                return d4;
-            }
-            if (Dice == "D6")
-            {
-                int d6 = roll.Next(1, 7);
-                return d6;
-            }
-            if (Dice == "D8")
-            {
-                int d8 = roll.Next(1, 9);
-                return d8;
-            }
-            if (Dice == "D10")
-            {
-                int d10 = roll.Next(1, 11);
-                return d10;
-            }
-            if (Dice == "D12")
-            {
-                int d12 = roll.Next(1, 13);
-                return d12;
-            }
-            if (Dice == "D20")
-            {
-                int d20 = roll.Next(1, 21);
-                return d20;
-            }
-            else
-                return -1;
-        }
-
-        public int D4()
-        {
-            Random roll = new Random();
-            int d4 = roll.Next(1, 5);
-            return d4;
-        }
-        public int D6()
-        {
-            Random rnd = new Random();
-            int d6 = rnd.Next(1, 7);
-            return d6;
-        }
-        public int D8()
-        {
-            Random roll = new Random();
-            int d8 = roll.Next(1, 9);
-            return d8;
-        }
-        public int D10()
-        {
-            Random roll = new Random();
-            int d10 = roll.Next(1, 11);
-            return d10;
-        }
-        public int D12()
-        {
-            Random roll = new Random();
-            int d12 = roll.Next(1, 13);
-            return d12;
-        }
-        public int D20()
-        {
-            Random roll = new Random();
-            int d20 = roll.Next(1, 21);
-            return d20;
-        }
-        #endregion
+      
     }
 }
