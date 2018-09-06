@@ -10,18 +10,19 @@ namespace Quest_
     {
         #region Player Properties
 
-        public string PlayerName { get; set; }
-        public int PlayerCurrentHealth { get; set; }
-        public int PlayerMaxHealth { get; set; }
-        public int PlayerCurrentMagic { get; set; }
-        public int PlayerMaxMagic { get; set; }
-        public int PlayerArmor { get; set; }
-        public int PlayerMoney { get; set; }
-        public int PlayerXP { get; set; }
-        public double PlayerWeight { get; set; }
-        public int PlayerRations { get; set; }
-        public int PlayerKeys { get; set; }
-        public string PlayerWeapon { get; set; }
+        private string PlayerName;
+        private int PlayerCurrentHealth;
+        private int PlayerMaxHealth { get; set; }
+        private int PlayerCurrentMagic { get; set; }
+        private int PlayerMaxMagic { get; set; }
+        private int PlayerArmor { get; set; }
+        private int PlayerMoney { get; set; }
+        private int PlayerXP { get; set; }
+        private double PlayerWeight { get; set; }
+        private int PlayerRations { get; set; }
+        private int PlayerKeys { get; set; }
+        private string PlayerWeapon { get; set; }
+        private string PlayerDefense { get; set; }
         #endregion
 
 
@@ -41,67 +42,26 @@ namespace Quest_
             PlayerWeight = 0.0;
             PlayerRations = 5;
             PlayerKeys = 0;
-            PlayerWeapon = "D6"; 
+            PlayerWeapon = "D6";
+            PlayerDefense = "D4";
             #endregion
 
-            #region Monster Constructors
-
-            BanditCurrentHealth = 10;
-            BanditMaxHealth = 10;
-            BanditPotion = 1;
-            BanditSword = "D6";
-            #endregion
+          
 
         }
 
-
-        #region Monster Properties
-
-        public int BanditCurrentHealth { get; set; }
-        public int BanditMaxHealth { get; private set; }
-        public int BanditPotion { get; set; }
-        public string BanditSword { get; set; }
-
-        #endregion
-
-        #region Dice
-
-        public int D4()
+        
+        public string WeaponDamage()
         {
-            Random roll = new Random();
-            int d4 = roll.Next(1, 5);
-            return d4;
+            return PlayerWeapon;
         }
-        public int D6()
+        public void PlayerDamage(int damage)
         {
-            Random rnd = new Random();
-            int d6 = rnd.Next(1, 7);
-            return d6;
+            PlayerCurrentHealth -= damage;
         }
-        public int D8()
+        public void PlayerHUD()
         {
-            Random roll = new Random();
-            int d8 = roll.Next(1, 9);
-            return d8;
+            Console.WriteLine($"HP: {PlayerCurrentHealth}/{PlayerMaxHealth} MP: {PlayerCurrentMagic}/{PlayerMaxMagic} AC: {PlayerArmor} Keys: {PlayerKeys}");
         }
-        public int D10()
-        {
-            Random roll = new Random();
-            int d10 = roll.Next(1, 11);
-            return d10;
-        }
-        public int D12()
-        {
-            Random roll = new Random();
-            int d12 = roll.Next(1, 13);
-            return d12;
-        }
-        public int D20()
-        {
-            Random roll = new Random();
-            int d20 = roll.Next(1, 21);
-            return d20;
-        }
-        #endregion
     }
 }

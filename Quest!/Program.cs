@@ -10,8 +10,12 @@ namespace Quest_
     {
         static void Main(string[] args)
         {
+            var U = new Utilities();
             var Game = new Game();
-            Game.BanditFight();
+            var ST = new StatusTracking();
+            var Bandit = new Bandit();
+            Bandit.BanditFight(ST);
+            Game.Castle();
         }
     }
 }
